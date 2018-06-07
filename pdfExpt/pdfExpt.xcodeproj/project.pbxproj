@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		225E157720C67A5700ADE169 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E157620C67A5700ADE169 /* AppDelegate.swift */; };
-		225E157920C67A5700ADE169 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E157820C67A5700ADE169 /* ViewController.swift */; };
+		225E157920C67A5700ADE169 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E157820C67A5700ADE169 /* PDFViewController.swift */; };
 		225E157C20C67A5700ADE169 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225E157A20C67A5700ADE169 /* Main.storyboard */; };
 		225E157F20C67A5700ADE169 /* pdfExpt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 225E157D20C67A5700ADE169 /* pdfExpt.xcdatamodeld */; };
 		225E158120C67A5800ADE169 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225E158020C67A5800ADE169 /* Assets.xcassets */; };
 		225E158420C67A5800ADE169 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225E158220C67A5800ADE169 /* LaunchScreen.storyboard */; };
 		225E158F20C67A5800ADE169 /* pdfExptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E158E20C67A5800ADE169 /* pdfExptTests.swift */; };
 		225E159A20C67A5800ADE169 /* pdfExptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E159920C67A5800ADE169 /* pdfExptUITests.swift */; };
-		225E15A920C6900200ADE169 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 225E15A820C6900200ADE169 /* test.pdf */; };
+		22712FAB20C6BFAE00B58CF7 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22712FAA20C6BFAE00B58CF7 /* DocumentBrowserViewController.swift */; };
+		22712FAF20C6BFBF00B58CF7 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22712FAE20C6BFBF00B58CF7 /* Document.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* Begin PBXFileReference section */
 		225E157320C67A5700ADE169 /* pdfExpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pdfExpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225E157620C67A5700ADE169 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		225E157820C67A5700ADE169 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		225E157820C67A5700ADE169 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		225E157B20C67A5700ADE169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		225E157E20C67A5700ADE169 /* pdfExpt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pdfExpt.xcdatamodel; sourceTree = "<group>"; };
 		225E158020C67A5800ADE169 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +51,8 @@
 		225E159520C67A5800ADE169 /* pdfExptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pdfExptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		225E159920C67A5800ADE169 /* pdfExptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pdfExptUITests.swift; sourceTree = "<group>"; };
 		225E159B20C67A5800ADE169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		225E15A820C6900200ADE169 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
+		22712FAA20C6BFAE00B58CF7 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
+		22712FAE20C6BFBF00B58CF7 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,10 @@
 		225E157520C67A5700ADE169 /* pdfExpt */ = {
 			isa = PBXGroup;
 			children = (
-				225E15A720C68FE600ADE169 /* test */,
 				225E157620C67A5700ADE169 /* AppDelegate.swift */,
-				225E157820C67A5700ADE169 /* ViewController.swift */,
+				22712FAA20C6BFAE00B58CF7 /* DocumentBrowserViewController.swift */,
+				22712FAE20C6BFBF00B58CF7 /* Document.swift */,
+				225E157820C67A5700ADE169 /* PDFViewController.swift */,
 				225E157A20C67A5700ADE169 /* Main.storyboard */,
 				225E158020C67A5800ADE169 /* Assets.xcassets */,
 				225E158220C67A5800ADE169 /* LaunchScreen.storyboard */,
@@ -129,14 +132,6 @@
 				225E159B20C67A5800ADE169 /* Info.plist */,
 			);
 			path = pdfExptUITests;
-			sourceTree = "<group>";
-		};
-		225E15A720C68FE600ADE169 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				225E15A820C6900200ADE169 /* test.pdf */,
-			);
-			path = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +238,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225E15A920C6900200ADE169 /* test.pdf in Resources */,
 				225E158420C67A5800ADE169 /* LaunchScreen.storyboard in Resources */,
 				225E158120C67A5800ADE169 /* Assets.xcassets in Resources */,
 				225E157C20C67A5700ADE169 /* Main.storyboard in Resources */,
@@ -271,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22712FAB20C6BFAE00B58CF7 /* DocumentBrowserViewController.swift in Sources */,
+				22712FAF20C6BFBF00B58CF7 /* Document.swift in Sources */,
 				225E157F20C67A5700ADE169 /* pdfExpt.xcdatamodeld in Sources */,
-				225E157920C67A5700ADE169 /* ViewController.swift in Sources */,
+				225E157920C67A5700ADE169 /* PDFViewController.swift in Sources */,
 				225E157720C67A5700ADE169 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cronoworks.pdfExpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -474,7 +470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cronoworks.pdfExpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
