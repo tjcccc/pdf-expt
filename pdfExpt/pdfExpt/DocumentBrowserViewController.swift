@@ -64,12 +64,10 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     
     func presentDocument(at documentURL: URL) {
         
-        let formatedDocumentUrl = documentURL.path.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
-        print("formated url: \(String(describing: formatedDocumentUrl))")
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let pdfViewController = storyBoard.instantiateViewController(withIdentifier: "PDFViewController") as! PDFViewController
-        pdfViewController.document = PDFDocument(url: documentURL)
-        print("file location: \(documentURL)")
+        pdfViewController.document = Document(fileURL: documentURL)
+        print("file location: \(pdfViewController.document?.fileURL.absoluteString ?? "no url.")")
         present(pdfViewController, animated: true, completion: nil)
     }
 }

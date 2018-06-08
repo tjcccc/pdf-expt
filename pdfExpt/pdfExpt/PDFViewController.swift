@@ -14,7 +14,8 @@ class PDFViewController: UIViewController {
     @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var documentTitle: UILabel!
     
-    var document: PDFDocument?
+    var document: UIDocument?
+    var pdfDocument: PDFDocument?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,11 @@ class PDFViewController: UIViewController {
 //        thumbnailView.layoutMode = .vertical
         
         // Load pdf file.
-        loadPDF(pdfDocument: document, readerView: pdfView)
+        if document != nil {
+            pdfDocument = PDFDocument(url: document!.fileURL)
+            loadPDF(pdf: pdfDocument, readerView: pdfView)
+        }
+        
 //        setDocumentTitle(pdfDocument: document, titleLabel: documentTitle)
     }
 
@@ -42,7 +47,7 @@ class PDFViewController: UIViewController {
         present(documentBrowserViewController, animated: true, completion: nil)
     }
     
-    func loadPDF(pdfDocument: PDFDocument?, readerView: PDFView?) {
+    func loadPDF(pdf: PDFDocument?, readerView: PDFView?) {
         if pdfDocument != nil && readerView != nil {
             readerView!.document = pdfDocument
         }
