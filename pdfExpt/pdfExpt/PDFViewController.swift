@@ -15,7 +15,7 @@ class PDFViewController: UIViewController {
     @IBOutlet weak var documentTitle: UILabel!
     
     var document: UIDocument?
-    var pdfDocument: PDFDocument?
+//    var pdfDocument: PDFDocument?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,13 @@ class PDFViewController: UIViewController {
 //        thumbnailView.layoutMode = .vertical
         
         // Load pdf file.
-        if document != nil {
-            pdfDocument = PDFDocument(url: document!.fileURL)
-            loadPDF(pdf: pdfDocument, readerView: pdfView)
+        guard document != nil else {
+            return
         }
-        
-//        setDocumentTitle(pdfDocument: document, titleLabel: documentTitle)
+        if let pdfDocument = PDFDocument(url: (document?.fileURL)!) {
+            loadPDF(pdf: pdfDocument, readerView: pdfView)
+            setTitle(pdf: pdfDocument, titleLabel: documentTitle)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,14 +48,14 @@ class PDFViewController: UIViewController {
         present(documentBrowserViewController, animated: true, completion: nil)
     }
     
-    func loadPDF(pdf: PDFDocument?, readerView: PDFView?) {
-        if pdfDocument != nil && readerView != nil {
-            readerView!.document = pdfDocument
-        }
+    func loadPDF(pdf: PDFDocument, readerView: PDFView?) {
+        readerView?.document = pdf
     }
     
-    func setDocumentTitle(pdfDocument: PDFDocument?, titleLabel: UILabel?) {
-        // TODO: Set title.
+    func setTitle(pdf: PDFDocument, titleLabel: UILabel?) {
+        let title: String = pdf.documentAttributes?["Title"] as? String ?? ""
+        let fileName = pdf.documentURL?.pathComponents.last
+        titleLabel?.text = title != "" ? title : fileName
     }
 
 

@@ -67,7 +67,6 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let pdfViewController = storyBoard.instantiateViewController(withIdentifier: "PDFViewController") as! PDFViewController
         pdfViewController.document = Document(fileURL: documentURL)
-        print("file location: \(pdfViewController.document?.fileURL.absoluteString ?? "no url.")")
         present(pdfViewController, animated: true, completion: nil)
     }
 }
