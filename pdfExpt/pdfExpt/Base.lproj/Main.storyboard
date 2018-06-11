@@ -67,6 +67,34 @@
                                     <constraint firstItem="jFW-fu-9Lo" firstAttribute="centerY" secondItem="iJk-gP-ZyX" secondAttribute="centerY" id="xwE-Wa-arK"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1et-Pt-S9J" userLabel="Footer Bar">
+                                <rect key="frame" x="0.0" y="1052" width="834" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPr-2u-DDw">
+                                        <rect key="frame" x="20" y="15" width="92" height="30"/>
+                                        <state key="normal" title="Add text note"/>
+                                        <connections>
+                                            <action selector="addTextNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pQi-0b-m8s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQB-s9-Nw8">
+                                        <rect key="frame" x="132" y="15" width="116" height="30"/>
+                                        <state key="normal" title="Show/Hide notes"/>
+                                        <connections>
+                                            <action selector="showNotes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jq4-JT-wWQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="TPr-2u-DDw" firstAttribute="leading" secondItem="1et-Pt-S9J" secondAttribute="leading" constant="20" id="Bkc-ub-TaU"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HQB-s9-Nw8" secondAttribute="trailing" constant="20" symbolic="YES" id="Ezr-PX-kBP"/>
+                                    <constraint firstItem="HQB-s9-Nw8" firstAttribute="centerY" secondItem="1et-Pt-S9J" secondAttribute="centerY" id="aYh-Cw-arK"/>
+                                    <constraint firstItem="HQB-s9-Nw8" firstAttribute="leading" secondItem="TPr-2u-DDw" secondAttribute="trailing" constant="20" id="eWl-nF-lHP"/>
+                                    <constraint firstItem="TPr-2u-DDw" firstAttribute="centerY" secondItem="1et-Pt-S9J" secondAttribute="centerY" id="hUb-I2-swu"/>
+                                    <constraint firstAttribute="height" constant="60" id="qeY-Sl-CVv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -76,8 +104,11 @@
                             <constraint firstItem="v7S-m8-kbJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Am-uk-K7I"/>
                             <constraint firstItem="iJk-gP-ZyX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BfH-XO-8VT"/>
                             <constraint firstItem="v7S-m8-kbJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GM5-ZF-1ml"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1et-Pt-S9J" secondAttribute="bottom" id="Ucw-8G-8TQ"/>
                             <constraint firstItem="iJk-gP-ZyX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mJC-ZX-t2b"/>
+                            <constraint firstItem="1et-Pt-S9J" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qvW-Nr-q0p"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v7S-m8-kbJ" secondAttribute="bottom" id="rc0-Vz-c0e"/>
+                            <constraint firstItem="1et-Pt-S9J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sDZ-gx-pVh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

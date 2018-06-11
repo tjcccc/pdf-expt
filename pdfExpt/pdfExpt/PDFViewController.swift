@@ -9,23 +9,17 @@
 import UIKit
 import PDFKit
 
-class PDFViewController: UIViewController {
+class PDFViewController: UIViewController, PDFDocumentDelegate {
     
     @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var documentTitle: UILabel!
     
     var document: UIDocument?
-//    var pdfDocument: PDFDocument?
+    var testNote: PDFAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // Set thumbnail view.
-//        thumbnailView.pdfView = pdfView
-//        thumbnailView.backgroundColor = UIColor.gray
-//        thumbnailView.thumbnailSize = CGSize(width: 180, height: 180)
-//        thumbnailView.layoutMode = .vertical
         
         // Load pdf file.
         guard document != nil else {
@@ -48,7 +42,23 @@ class PDFViewController: UIViewController {
         present(documentBrowserViewController, animated: true, completion: nil)
     }
     
+    @IBAction func addTextNote(_ sender: Any) {
+        // Test for function
+        print(pdfView.currentPage ?? "??? page")
+        insertText(page: pdfView?.currentPage)
+    }
+    
+    @IBAction func showNotes(_ sender: Any) {
+        if pdfView.currentPage != nil {
+//            print(pdfView.currentPage?.annotations)
+//            let isShown = pdfView.currentPage!.displaysAnnotations
+//            testNote?.shouldDisplay = false
+            
+        }
+    }
+    
     func loadPDF(pdf: PDFDocument, readerView: PDFView?) {
+        pdf.delegate = self
         readerView?.document = pdf
     }
     
@@ -57,7 +67,22 @@ class PDFViewController: UIViewController {
         let fileName = pdf.documentURL?.pathComponents.last
         titleLabel?.text = title != "" ? title : fileName
     }
-
+    
+    func insertText(page: PDFPage?) {
+        if page != nil {
+            let pageBounds = page!.bounds(for: .cropBox)
+            let textFieldMultilineBounds = CGRect(x: 50, y: pageBounds.size.height - 300, width: 320, height: 240)
+            let textFieldMultiline = PDFAnnotation(bounds: textFieldMultilineBounds,
+                                                   forType: PDFAnnotationSubtype(rawValue: PDFAnnotationSubtype.widget.rawValue),
+                                                   withProperties: nil)
+            textFieldMultiline.widgetFieldType = PDFAnnotationWidgetSubtype(rawValue: PDFAnnotationWidgetSubtype.text.rawValue)
+            textFieldMultiline.backgroundColor = UIColor.blue.withAlphaComponent(0.25)
+            textFieldMultiline.font = UIFont.systemFont(ofSize: 24)
+            textFieldMultiline.isMultiline = true
+            testNote = textFieldMultiline
+            page!.addAnnotation(textFieldMultiline)
+        }
+    }
 
 }
 
