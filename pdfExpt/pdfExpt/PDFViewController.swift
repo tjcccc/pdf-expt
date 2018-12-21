@@ -15,7 +15,8 @@ class PDFViewController: UIViewController, PDFDocumentDelegate {
     @IBOutlet weak var documentTitle: UILabel!
     
     var document: UIDocument?
-    var testNote: PDFAnnotation?
+    var currentPdf: PDFDocument?
+    var testNote: [PDFAnnotation?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class PDFViewController: UIViewController, PDFDocumentDelegate {
         if let pdfDocument = PDFDocument(url: (document?.fileURL)!) {
             loadPDF(pdf: pdfDocument, readerView: pdfView)
             setTitle(pdf: pdfDocument, titleLabel: documentTitle)
+            currentPdf = pdfDocument
+            testNote = [PDFAnnotation?](repeating: nil, count: (currentPdf?.pageCount)!)
         }
     }
 
@@ -44,17 +47,27 @@ class PDFViewController: UIViewController, PDFDocumentDelegate {
     
     @IBAction func addTextNote(_ sender: Any) {
         // Test for function
-        print(pdfView.currentPage ?? "??? page")
-        insertText(page: pdfView?.currentPage)
+        guard pdfView.currentPage != nil else {
+            return
+        }
+        print(currentPdf?.index(for: pdfView.currentPage!) ?? "??? page")
+        insertNote(page: pdfView?.currentPage)
     }
     
     @IBAction func showNotes(_ sender: Any) {
-        if pdfView.currentPage != nil {
-//            print(pdfView.currentPage?.annotations)
-//            let isShown = pdfView.currentPage!.displaysAnnotations
-//            testNote?.shouldDisplay = false
-            
+        guard pdfView.currentPage != nil else {
+            return;
         }
+        print(pdfView.currentPage?.annotations ?? "??? annotation")
+        print(testNote)
+        let pageIndex = currentPdf?.index(for: pdfView.currentPage!)
+        let isShown = pdfView.currentPage!.annotations.contains(testNote[pageIndex!]!)
+        if isShown {
+            pdfView.currentPage!.removeAnnotation(testNote[pageIndex!]!)
+        } else {
+            pdfView.currentPage!.addAnnotation(testNote[pageIndex!]!)
+        }
+
     }
     
     func loadPDF(pdf: PDFDocument, readerView: PDFView?) {
@@ -68,10 +81,11 @@ class PDFViewController: UIViewController, PDFDocumentDelegate {
         titleLabel?.text = title != "" ? title : fileName
     }
     
-    func insertText(page: PDFPage?) {
+    func insertNote(page: PDFPage?) {
         if page != nil {
+            let pageIndex = currentPdf!.index(for: page!)
             let pageBounds = page!.bounds(for: .cropBox)
-            let textFieldMultilineBounds = CGRect(x: 50, y: pageBounds.size.height - 300, width: 320, height: 240)
+            let textFieldMultilineBounds = CGRect(x: 0, y: 0, width: pageBounds.width, height: pageBounds.height)
             let textFieldMultiline = PDFAnnotation(bounds: textFieldMultilineBounds,
                                                    forType: PDFAnnotationSubtype(rawValue: PDFAnnotationSubtype.widget.rawValue),
                                                    withProperties: nil)
@@ -79,10 +93,10 @@ class PDFViewController: UIViewController, PDFDocumentDelegate {
             textFieldMultiline.backgroundColor = UIColor.blue.withAlphaComponent(0.25)
             textFieldMultiline.font = UIFont.systemFont(ofSize: 24)
             textFieldMultiline.isMultiline = true
-            testNote = textFieldMultiline
+            testNote.insert(textFieldMultiline, at: pageIndex)
             page!.addAnnotation(textFieldMultiline)
         }
     }
-
+    
 }
 
